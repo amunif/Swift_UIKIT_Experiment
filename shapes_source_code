@@ -1,0 +1,74 @@
+import UIKit
+import PlaygroundSupport
+/*:
+ # Fun with Shapes
+ This is a simple playground that lets you play around with shapes and colors. You will be able
+ change parameters that will give you different results.
+ Try changing the colors and corner, width, and height inputs to see what you get.
+ */
+
+let containerView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 367.0, height: 667.0))
+
+containerView.backgroundColor = UIColor.white
+PlaygroundPage.current.liveView = containerView
+
+/*: 
+ ### Can you turn the big rectangle into a circle? Try changing the values for croner, width, and height to see what happens
+*/
+
+let corner = 0.0
+let width = 50.0
+let height = 50.0
+
+
+let shape_1 = UIView(frame: CGRect(x: 0.0, y: 0.0, width: CGFloat(width), height: CGFloat(height)))
+
+shape_1.center = containerView.center
+shape_1.layer.cornerRadius = CGFloat(corner)
+
+let startingColor = UIColor.cyan
+shape_1.backgroundColor = startingColor
+
+containerView.addSubview(shape_1);
+
+/*:
+ ### Change the variables corner_2, width_2, and height_2 below and try to turn the circle into a square
+ */
+let corner_2 = 25.0
+let width_2 = 50.0
+let height_2 = 50.0
+
+let shape_2 = UIView(frame: CGRect(x: 0.0, y: 0.0, width: CGFloat(width_2), height: CGFloat(height_2)))
+shape_2.center = containerView.center
+shape_2.layer.cornerRadius = CGFloat(corner_2)
+
+/*:
+### Can you change the yellow color to red? Give it a shot. Try:
+    var shape_color = UIColor.red
+### What other colors can you use?
+ */
+var shape_color = UIColor.yellow
+
+shape_2.backgroundColor = shape_color
+containerView.addSubview(shape_2)
+/*:
+### Change the animnation time and see what happens to the animation. Try:
+    var animation_time = 1.8
+ */
+var animation_time = 1.3
+
+UIView.animate(withDuration: 1.9, animations: { () -> Void in
+    let endingColor = UIColor(red: (155.0/255.0), green: (120.0/255.0), blue: (204.0/255.0), alpha: 1.0)
+    shape_1.backgroundColor = endingColor
+    
+    let scaleTransform = CGAffineTransform(scaleX: 6.0, y: 6.0)
+    
+    shape_1.transform = scaleTransform
+    
+    let rotationTransform = CGAffineTransform(rotationAngle: 3.14)
+    
+    shape_2.transform = rotationTransform
+})
+
+
+
